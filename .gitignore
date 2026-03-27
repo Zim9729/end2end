@@ -1,0 +1,35 @@
+# Build artifacts
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+*.dir/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+
+# IDE / editor
+.idea/
+.vscode/
+.windsurf/
+
+# Local dependency copy / generated data
+3rdparty/
+config/
+
+# Binary outputs
+*.exe
+*.dll
+*.lib
+*.pdb
+*.obj
+*.ilk
+*.exp
+*.out
+*.so
+*.a
+*.engine
+result.jpg
