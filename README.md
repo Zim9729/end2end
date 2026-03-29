@@ -214,6 +214,72 @@ end2end --worker <engine_file> <queue_dir> <shared_root>
 end2end --worker yolov8.engine queue shared
 ```
 
+### 8.4 UDP 客户端 demo
+
+新增了一个独立的 UDP 调用客户端 demo，用于向 Jetson UDP 服务发送 `submit` 请求并接收回执。
+
+构建命令：
+
+```bash
+cmake --build build --config Release --target udp_client_demo
+```
+
+运行方式：
+
+```bash
+udp_client_demo <server_ip> <server_port> <reply_ip> <reply_port> [task_id] [request_relpath] [result_relpath]
+```
+
+参数说明：
+
+- `server_ip`：Jetson Orin UDP 服务地址，例如 `192.168.145.100`
+- `server_port`：Jetson UDP 监听端口，例如 `9000`
+- `reply_ip`：回执中填写的本机 IP，例如 `192.168.145.1`
+- `reply_port`：本机接收回执的端口，例如 `9001`
+- `task_id`：可选，任务 ID，不传时自动生成
+- `request_relpath`：可选，共享目录中的输入 JSON 相对路径
+- `result_relpath`：可选，共享目录中的结果 JSON 相对路径
+
+示例：
+
+```bash
+udp_client_demo 192.168.145.100 9000 192.168.145.1 9001 task-1 requests/inbox/a.json results/outbox/a_result.json
+```
+
+该 demo 会发送如下 `submit` 请求字段：
+
+- `cmd=submit`
+- `protocol_version=1.0`
+- `task_id`
+- `request_relpath`
+- `result_relpath`
+- `reply_ip`
+- `reply_port`
+
+#### 本地测试方式
+
+如果你只是想先在本机验证 UDP 通信是否正常，可以用回环地址做最小联通测试：
+
+1. 启动 UDP 服务：
+
+```bash
+end2end --serve 9000 queue shared
+```
+
+2. 另开一个终端运行客户端 demo：
+
+```bash
+udp_client_demo 127.0.0.1 9000 127.0.0.1 9001 task-1 requests/inbox/a.json results/outbox/a_result.json
+```
+
+3. 预期结果：
+
+- 客户端打印发送的 JSON
+- 服务端返回 `accepted`
+- 客户端打印回包内容
+
+如果要验证完整链路，还需要再启动 `worker` 模式，并检查共享目录里任务文件和结果文件是否生成。
+
 ## 9. UDP 联调流程
 
 推荐的联调方式如下：
