@@ -1,5 +1,6 @@
 # Build artifacts
 build/
+caller_client_cpp/build
 cmake-build-*/
 CMakeFiles/
 CMakeCache.txt

@@ -1,0 +1,12 @@
+{
+  "device_id": "device-1",
+  "id": "record-1",
+  "imagePath": "images/sample.jpg",
+  "mileage": "1.250",
+  "mileageSign": "K",
+  "task_id": "replace-by-client",
+  "version": "1.0.0",
+  "img_physical": 1.0,
+  "img_scaling": 1.5,
+  "image": ""
+}
