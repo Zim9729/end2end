@@ -1,0 +1,18 @@
+{
+    "defects": [
+        {
+            "id": "c9979693ae6143be8cce06e1c26178c5",
+            "physical_ymax": 2047,
+            "physical_ymin": 947,
+            "type": "XLBH-542",
+            "xmax": 2557,
+            "xmin": 1502,
+            "ymax": 2047,
+            "ymin": 947
+        }
+    ],
+    "ikoujian_count": 0,
+    "imagePath": "G:\\GUANG3\\勿删\\XLBH-133=1200-31_1道床翻浆冒泥\\1772950451323_-25675000.jpg",
+    "img_physical": 1.0,
+    "img_scaling": 1.5
+}

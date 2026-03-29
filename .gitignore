@@ -18,7 +18,6 @@ CTestTestfile.cmake
 
 # Local dependency copy / generated data
 3rdparty/
-config/
 
 # Binary outputs
 *.exe
